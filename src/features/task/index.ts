@@ -1,7 +1,6 @@
 export * from './ui/addTaskBtn'
 export * from './ui/addTaskModal'
 export * from './ui/sortTask'
-export * from './ui/filterTaskBtn'
 export * from './ui/filterTaskModal'
 export * from './ui/editTaskBtn'
 export * from './ui/editTaskModal'

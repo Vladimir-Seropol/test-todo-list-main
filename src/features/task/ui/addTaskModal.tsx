@@ -101,7 +101,7 @@ export const AddTaskModal = forwardRef<AddTaskRef, AddTaskProps>(
             <Controller
               name="content"
               control={control}
-              rules={{ required: 'Task content is required' }}
+              rules={{ required: 'Укажите содержание' }}
               render={({ field }) => (
                 <Input
                   {...field}
@@ -116,14 +116,20 @@ export const AddTaskModal = forwardRef<AddTaskRef, AddTaskProps>(
             <Controller
               name="status"
               control={control}
-              rules={{ required: 'Status is required' }}
+              rules={{ required: 'Укажите статус' }}
               render={({ field }) => (
                 <Select
                   {...field}
                   mode="primary"
                   id="taskStatus"
                   label="Статус задачи"
-                  options={StatusList}
+                  options={[
+                    { value: '', label: 'Выберите статус' },
+                    ...StatusList.map(status => ({
+                      value: status,
+                      label: status
+                    }))
+                  ]}
                   error={errors.status?.message}
                 />
               )}
@@ -132,14 +138,20 @@ export const AddTaskModal = forwardRef<AddTaskRef, AddTaskProps>(
             <Controller
               name="category"
               control={control}
-              rules={{ required: 'Category is required' }}
+              rules={{ required: 'Укажите категорию' }}
               render={({ field }) => (
                 <Select
                   {...field}
                   mode="primary"
                   id="taskCategory"
                   label="Категория задачи"
-                  options={categories.map(category => category.type)}
+                  options={[
+                    { value: '', label: 'Выберите категорию' },
+                    ...categories.map(category => ({
+                      value: category.type,
+                      label: category.type
+                    }))
+                  ]}
                   error={errors.category?.message}
                 />
               )}
@@ -148,7 +160,7 @@ export const AddTaskModal = forwardRef<AddTaskRef, AddTaskProps>(
             <Controller
               name="date"
               control={control}
-              rules={{ required: 'Date is required' }}
+              rules={{ required: 'Укажите дату' }}
               render={({ field }) => (
                 <Input
                   {...field}
